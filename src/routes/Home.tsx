@@ -42,14 +42,9 @@ export default function Home() {
         <article className="prose prose-neutral">
           <h2>Tech Stack</h2>
           <ul>
-            {techStack.map((item) => (
-              <li>
-                <a
-                  key={item.label}
-                  href={item.href}
-                  target="_blank"
-                  rel="nooponer noreferrer"
-                >
+            {techStack.map((item, i) => (
+              <li key={i}>
+                <a href={item.href} target="_blank" rel="nooponer noreferrer">
                   {item.label}
                 </a>
               </li>

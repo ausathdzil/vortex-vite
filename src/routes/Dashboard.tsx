@@ -11,7 +11,7 @@ export default function Dashboard() {
       <Header>
         <Title>Dashboard</Title>
       </Header>
-      <Main>Dashboard</Main>
+      <Main></Main>
     </ContentWrapper>
   );
 }

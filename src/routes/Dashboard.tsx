@@ -5,13 +5,13 @@ import {
   Title,
 } from '../components/SharedStyles';
 
-export default function Home() {
+export default function Dashboard() {
   return (
     <ContentWrapper>
       <Header>
-        <Title>Home</Title>
+        <Title>Dashboard</Title>
       </Header>
-      <Main>Home</Main>
+      <Main>Dashboard</Main>
     </ContentWrapper>
   );
 }

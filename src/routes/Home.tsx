@@ -1,9 +1,21 @@
+import { Link } from 'react-router';
 import {
   ContentWrapper,
   Header,
   Main,
   Title,
 } from '../components/SharedStyles';
+
+const routes = [
+  {
+    label: 'Home',
+    href: '/',
+  },
+  {
+    label: 'Dashboard',
+    href: '/dashboard',
+  },
+];
 
 const techStack = [
   {
@@ -40,6 +52,14 @@ export default function Home() {
       </Header>
       <Main>
         <article className="prose prose-neutral">
+          <h2>Routes</h2>
+          <ul>
+            {routes.map((item, i) => (
+              <li key={i}>
+                <Link to={item.href}>{item.label}</Link>
+              </li>
+            ))}
+          </ul>
           <h2>Tech Stack</h2>
           <ul>
             {techStack.map((item, i) => (

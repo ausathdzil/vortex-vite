@@ -1,6 +1,8 @@
+import type { ProvinceSummary } from '../types/news';
+
 const API_URL: string | undefined = import.meta.env.VITE_API_URL;
 
-export async function getProvinceSummary() {
+export async function getProvinceSummary(): Promise<ProvinceSummary[]> {
   if (!API_URL) {
     throw new Error('VITE_API_URL is not set');
   }

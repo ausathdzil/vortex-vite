@@ -16,6 +16,8 @@ export async function getNews(params: Partial<NewsParams>): Promise<News> {
   }
   if (params.size) {
     searchParams.set('size', params.size);
+  } else {
+    searchParams.set('size', '10');
   }
   if (params.province) {
     searchParams.set('province', params.province);

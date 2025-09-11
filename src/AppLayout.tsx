@@ -1,8 +1,15 @@
+import { Suspense } from 'react';
 import { Outlet } from 'react-router';
 
 import { GlobalStyle } from './components/GlobalStyle';
-import { Container } from './components/SharedStyles';
+import {
+  Container,
+  ContentWrapper,
+  Header,
+  Main,
+} from './components/SharedStyles';
 import { AppSidebar } from './components/ui/Sidebar';
+import { Skeleton } from './components/ui/Skeleton';
 
 export default function AppLayout() {
   return (
@@ -10,8 +17,23 @@ export default function AppLayout() {
       <GlobalStyle />
       <Container>
         <AppSidebar />
-        <Outlet />
+        <Suspense fallback={<AppSkeleton />}>
+          <Outlet />
+        </Suspense>
       </Container>
     </>
+  );
+}
+
+function AppSkeleton() {
+  return (
+    <ContentWrapper>
+      <Header>
+        <Skeleton className="w-full h-6" />
+      </Header>
+      <Main>
+        <Skeleton className="size-full" />
+      </Main>
+    </ContentWrapper>
   );
 }

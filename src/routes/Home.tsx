@@ -23,10 +23,6 @@ const techStack = [
     href: 'https://react.dev/',
   },
   {
-    label: 'Vite',
-    href: 'https://vite.dev/',
-  },
-  {
     label: 'React Router',
     href: 'https://reactrouter.com/',
   },
@@ -41,6 +37,18 @@ const techStack = [
   {
     label: 'Phospor Icons',
     href: 'https://phosphoricons.com/',
+  },
+  {
+    label: 'TanStack Query',
+    href: 'https://tanstack.com/query/latest',
+  },
+  {
+    label: 'ECharts',
+    href: 'https://echarts.apache.org/',
+  },
+  {
+    label: 'ECharts for React',
+    href: 'https://github.com/apache/echarts-for-react',
   },
 ];
 

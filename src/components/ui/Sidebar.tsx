@@ -1,4 +1,6 @@
-import { HouseIcon, LayoutIcon, LightningIcon } from '@phosphor-icons/react';
+import { HouseIcon } from '@phosphor-icons/react/dist/csr/House';
+import { LayoutIcon } from '@phosphor-icons/react/dist/csr/Layout';
+import { LightningIcon } from '@phosphor-icons/react/dist/csr/Lightning';
 import { NavLink } from 'react-router';
 import styled from 'styled-components';
 

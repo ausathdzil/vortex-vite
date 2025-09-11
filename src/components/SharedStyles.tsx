@@ -12,7 +12,7 @@ export const ContentWrapper = styled.div`
 `;
 
 export const Header = styled.header`
-  padding: calc(var(--spacing) * 4);
+  padding: calc(var(--spacing) * 6);
   border-bottom: 1px solid var(--border);
 `;
 
@@ -20,10 +20,11 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: calc(var(--spacing) * 4);
+  padding: calc(var(--spacing) * 6);
 `;
 
 export const Title = styled.h1`
   font-size: 1.25rem;
   font-weight: 500;
+  line-height: 1;
 `;

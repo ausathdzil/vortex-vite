@@ -8,6 +8,9 @@ export default defineConfig({
     react({ plugins: [['@swc/plugin-styled-components', {}]] }),
     tailwindcss(),
   ],
+  preview: {
+    port: 3000,
+  },
   server: {
     port: 3000,
   },

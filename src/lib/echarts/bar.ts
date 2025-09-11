@@ -1,10 +1,10 @@
-import * as echarts from 'echarts/core';
+import { BarChart } from 'echarts/charts';
 import {
   GridComponent,
   LegendComponent,
   TooltipComponent,
 } from 'echarts/components';
-import { BarChart } from 'echarts/charts';
+import * as echarts from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
 
 echarts.use([

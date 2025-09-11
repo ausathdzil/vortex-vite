@@ -1,6 +1,7 @@
 import { HouseIcon } from '@phosphor-icons/react/dist/csr/House';
 import { LayoutIcon } from '@phosphor-icons/react/dist/csr/Layout';
 import { LightningIcon } from '@phosphor-icons/react/dist/csr/Lightning';
+import { NewspaperIcon } from '@phosphor-icons/react/dist/csr/Newspaper';
 import { NavLink } from 'react-router';
 import styled from 'styled-components';
 
@@ -9,6 +10,11 @@ const navItems = [
     label: 'Home',
     href: '/',
     icon: <HouseIcon weight="bold" />,
+  },
+  {
+    label: 'News',
+    href: '/news',
+    icon: <NewspaperIcon weight="bold" />,
   },
   {
     label: 'Dashboard',

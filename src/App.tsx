@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router';
 import AppLayout from './AppLayout';
 import Dashboard from './routes/Dashboard';
 import Home from './routes/Home';
+import News from './routes/News';
 
 const queryClient = new QueryClient();
 
@@ -14,6 +15,7 @@ export default function App() {
         <Routes>
           <Route element={<AppLayout />}>
             <Route index element={<Home />} />
+            <Route path="news" element={<News />} />
             <Route path="dashboard" element={<Dashboard />} />
           </Route>
         </Routes>

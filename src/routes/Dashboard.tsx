@@ -45,7 +45,7 @@ function ChartsWrapper() {
   }
 
   return (
-    <div className="h-full grid grid-cols-2 gap-4">
+    <div className="h-full grid grid-cols-1 xl:grid-cols-2 gap-4">
       <ProvinceSummaryGraph data={data} />
       <ProvinceSummaryChart data={data} />
     </div>
@@ -56,7 +56,7 @@ function ProvinceSummaryGraph({ data }: { data: ProvinceSummary[] }) {
   const provinceNodes = data.map((province, index) => ({
     id: province.province,
     name: province.province,
-    symbolSize: Math.min(Math.sqrt(province.article_count) * 3, 50),
+    symbolSize: Math.sqrt(province.article_count),
     value: province.article_count,
     category: index,
   }));
@@ -66,7 +66,7 @@ function ProvinceSummaryGraph({ data }: { data: ProvinceSummary[] }) {
       return {
         id: `${province.province}-${city.city}`,
         name: city.city,
-        symbolSize: Math.min(Math.sqrt(city.article_count) * 1.5, 25),
+        symbolSize: Math.sqrt(city.article_count),
         value: city.article_count,
         category: provinceIndex,
       };
@@ -95,6 +95,8 @@ function ProvinceSummaryGraph({ data }: { data: ProvinceSummary[] }) {
     legend: [
       {
         data: categories.map((category) => category.name),
+        itemGap: 16,
+        itemWidth: 15,
       },
     ],
     animationDuration: 1500,
@@ -110,7 +112,7 @@ function ProvinceSummaryGraph({ data }: { data: ProvinceSummary[] }) {
         links: links,
         categories: categories,
         label: {
-          position: 'right',
+          position: 'top',
           formatter: '{b}',
         },
         lineStyle: {
@@ -129,7 +131,7 @@ function ProvinceSummaryGraph({ data }: { data: ProvinceSummary[] }) {
       <CardContent>
         <ReactECharts
           option={options}
-          style={{ height: '100%' }}
+          style={{ height: '100%', minHeight: '500px' }}
           opts={{ renderer: 'svg' }}
         />
       </CardContent>
@@ -175,7 +177,7 @@ function ProvinceSummaryChart({ data }: { data: ProvinceSummary[] }) {
       <CardContent>
         <ReactECharts
           option={option}
-          style={{ height: '100%' }}
+          style={{ height: '100%', minHeight: '500px' }}
           opts={{ renderer: 'svg' }}
         />
       </CardContent>

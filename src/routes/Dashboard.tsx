@@ -1,7 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
-import { graphic, type EChartsOption } from 'echarts';
+import { type EChartsOption } from 'echarts';
 import ReactECharts from 'echarts-for-react';
 
+import { Card, CardContent, CardHeader, CardTitle } from '../components/Card';
 import {
   ContentWrapper,
   Header,
@@ -44,7 +45,7 @@ function ChartsWrapper() {
   }
 
   return (
-    <div className="size-full grid grid-cols-2 gap-8">
+    <div className="h-full grid grid-cols-2 gap-4">
       <ProvinceSummaryGraph data={data} />
       <ProvinceSummaryChart data={data} />
     </div>
@@ -94,7 +95,6 @@ function ProvinceSummaryGraph({ data }: { data: ProvinceSummary[] }) {
     legend: [
       {
         data: categories.map((category) => category.name),
-        padding: -12,
       },
     ],
     animationDuration: 1500,
@@ -102,12 +102,13 @@ function ProvinceSummaryGraph({ data }: { data: ProvinceSummary[] }) {
     series: [
       {
         type: 'graph',
+        zoom: 0.9,
+        top: 'top',
         legendHoverLink: false,
         layout: 'circular',
         data: nodes,
         links: links,
         categories: categories,
-        roam: true,
         label: {
           position: 'right',
           formatter: '{b}',
@@ -121,11 +122,18 @@ function ProvinceSummaryGraph({ data }: { data: ProvinceSummary[] }) {
   };
 
   return (
-    <ReactECharts
-      option={options}
-      style={{ height: '100%' }}
-      opts={{ renderer: 'svg' }}
-    />
+    <Card>
+      <CardHeader>
+        <CardTitle>Province Graph</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <ReactECharts
+          option={options}
+          style={{ height: '100%' }}
+          opts={{ renderer: 'svg' }}
+        />
+      </CardContent>
+    </Card>
   );
 }
 
@@ -134,11 +142,17 @@ function ProvinceSummaryChart({ data }: { data: ProvinceSummary[] }) {
     textStyle: {
       fontFamily: 'Inter',
     },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'shadow',
+      },
+    },
     xAxis: {
       type: 'category',
       data: data.map((item) => item.province),
-      axisLabel: {
-        rotate: 45,
+      axisTick: {
+        alignWithLabel: true,
       },
     },
     yAxis: {
@@ -146,22 +160,25 @@ function ProvinceSummaryChart({ data }: { data: ProvinceSummary[] }) {
     },
     series: [
       {
-        data: data.map((item) => item.article_count),
+        name: 'Article Count',
         type: 'bar',
-        itemStyle: {
-          color: new graphic.LinearGradient(0, 0, 0, 1, [
-            { offset: 1, color: 'var(--chart-1)' },
-          ]),
-        },
+        data: data.map((item) => item.article_count),
       },
     ],
   };
 
   return (
-    <ReactECharts
-      option={option}
-      style={{ height: '100%' }}
-      opts={{ renderer: 'svg' }}
-    />
+    <Card>
+      <CardHeader>
+        <CardTitle>Province Summary</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <ReactECharts
+          option={option}
+          style={{ height: '100%' }}
+          opts={{ renderer: 'svg' }}
+        />
+      </CardContent>
+    </Card>
   );
 }

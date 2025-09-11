@@ -7,7 +7,7 @@ export async function getProvinceSummary(): Promise<ProvinceSummary[]> {
     throw new Error('VITE_API_URL is not set');
   }
 
-  const response = await fetch(`${API_URL}/news/province-summary`, {
+  const response = await fetch(`${API_URL}/news/province-summary-with-cities`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

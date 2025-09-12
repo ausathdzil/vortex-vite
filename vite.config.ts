@@ -9,8 +9,8 @@ export default defineConfig({
     cssMinify: 'lightningcss',
     // rollupOptions: {
     //   output: {
-    //     manualChunks: {
-    //       echarts: ['echarts'],
+    //     advancedChunks: {
+    //       groups: [{ name: 'echarts', test: /echarts/ }],
     //     },
     //   },
     // },
@@ -32,5 +32,13 @@ export default defineConfig({
   },
   server: {
     port: 3000,
+    warmup: {
+      clientFiles: [
+        './src/components/dashboard/ProvinceSummaryGraph.tsx',
+        './src/components/dashboard/ProvinceSummaryBar.tsx',
+        './src/lib/echarts/bar.ts',
+        './src/lib/echarts/graph.ts',
+      ]
+    }
   },
 });

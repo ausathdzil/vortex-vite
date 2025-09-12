@@ -3,10 +3,11 @@
 @plugin "@tailwindcss/typography";
 
 @font-face {
-  font-family: 'Inter';
-  src: url('./assets/InterVariable.woff2') format(woff2);
-  font-weight: 400 500 600 700;
+  font-family: Inter;
   font-style: normal;
+  font-weight: 400 500 600 700;
+  font-display: swap;
+  src: url('./assets/InterVariable.woff2') format(woff2);
 }
 
 :root {

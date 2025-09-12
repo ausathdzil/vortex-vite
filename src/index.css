@@ -1,14 +1,5 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap'); */
 @import 'tailwindcss';
-@plugin "@tailwindcss/typography";
-
-@font-face {
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 400 500 600 700;
-  font-display: swap;
-  src: url('./assets/InterVariable.woff2') format(woff2);
-}
+@plugin '@tailwindcss/typography';
 
 :root {
   --background: oklch(1 0 0);
@@ -164,8 +155,6 @@
   --tracking-wide: calc(var(--tracking-normal) + 0.025em);
   --tracking-wider: calc(var(--tracking-normal) + 0.05em);
   --tracking-widest: calc(var(--tracking-normal) + 0.1em);
-}
 
-@theme {
-  --font-inter: 'Inter', sans-serif;
+  --font-sans: 'Inter', sans-serif;
 }

@@ -1,5 +1,5 @@
 import tailwindcss from '@tailwindcss/vite';
-import react from '@vitejs/plugin-react-swc';
+import react from '@vitejs/plugin-react';
 import path from 'node:path';
 import { defineConfig } from 'vite';
 
@@ -7,21 +7,26 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   build: {
     cssMinify: 'lightningcss',
-    // rollupOptions: {
-    //   output: {
-    //     advancedChunks: {
-    //       groups: [{ name: 'echarts', test: /echarts/ }],
-    //     },
-    //   },
-    // },
+    rollupOptions: {
+      output: {
+        // advancedChunks: {
+        //   groups: [{ name: 'echarts', test: /echarts/ }],
+        // },
+        dir: 'dist',
+      },
+      transform: {
+        plugins: {
+          styledComponents: {
+            pure: true,
+          },
+        },
+      },
+    },
   },
   css: {
     transformer: 'lightningcss',
   },
-  plugins: [
-    react({ plugins: [['@swc/plugin-styled-components', {}]] }),
-    tailwindcss(),
-  ],
+  plugins: [react(), tailwindcss()],
   preview: {
     port: 3000,
   },
@@ -38,7 +43,7 @@ export default defineConfig({
         './src/components/dashboard/ProvinceSummaryBar.tsx',
         './src/lib/echarts/bar.ts',
         './src/lib/echarts/graph.ts',
-      ]
-    }
+      ],
+    },
   },
 });

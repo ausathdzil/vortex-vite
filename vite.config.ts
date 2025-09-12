@@ -7,11 +7,17 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   build: {
     cssMinify: 'lightningcss',
-    rollupOptions: {
+    rolldownOptions: {
       output: {
-        // advancedChunks: {
-        //   groups: [{ name: 'echarts', test: /echarts/ }],
-        // },
+        advancedChunks: {
+          groups: [
+            { name: 'phosphor-icons', test: '@phosphor-icons/react' },
+            { name: 'react', test: /\/(react|react-dom)\// },
+            { name: 'react-router', test: 'react-router' },
+            { name: 'react-query', test: '@tanstack/react-query' },
+            { name: 'styled-components', test: 'styled-components' },
+          ],
+        },
         dir: 'dist',
       },
       transform: {

@@ -1,8 +1,8 @@
 import { type EChartsOption } from 'echarts';
 import ReactEChartsCore from 'echarts-for-react/lib/core';
 
-import echarts from '@/lib/echarts/bar';
-import type { ProvinceSummary } from '@/lib/types/news';
+import echarts from '@/lib/echarts/bar.ts';
+import type { ProvinceSummary } from '@/lib/types/news.ts';
 
 export default function ProvinceSummaryBar({
   data,

@@ -2,13 +2,13 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter, Route, Routes } from 'react-router';
 
 import { lazy } from 'react';
-import AppLayout from './AppLayout';
+import AppLayout from './AppLayout.tsx';
 
 const queryClient = new QueryClient();
 
-const HomePage = lazy(() => import('./routes/Home'));
-const NewsPage = lazy(() => import('./routes/News'));
-const DashboardPage = lazy(() => import('./routes/Dashboard'));
+const HomePage = lazy(() => import('./routes/Home.tsx'));
+const NewsPage = lazy(() => import('./routes/News.tsx'));
+const DashboardPage = lazy(() => import('./routes/Dashboard.tsx'));
 
 export default function App() {
   return (

@@ -1,16 +1,16 @@
 import { useQuery } from '@tanstack/react-query';
 import { lazy, Suspense } from 'react';
 
-import { ContentWrapper, Header, Main, Title } from '@/components/SharedStyles';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
-import { Skeleton } from '@/components/ui/Skeleton';
-import { getProvinceSummary } from '@/lib/data/news';
+import { ContentWrapper, Header, Main, Title } from '@/components/SharedStyles.tsx';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card.tsx';
+import { Skeleton } from '@/components/ui/Skeleton.tsx';
+import { getProvinceSummary } from '@/lib/data/news.ts';
 
 const ProvinceSummaryGraph = lazy(
-  () => import('@/components/dashboard/ProvinceSummaryGraph')
+  () => import('@/components/dashboard/ProvinceSummaryGraph.tsx')
 );
 const ProvinceSummaryBar = lazy(
-  () => import('@/components/dashboard/ProvinceSummaryBar')
+  () => import('@/components/dashboard/ProvinceSummaryBar.tsx')
 );
 
 export default function Dashboard() {

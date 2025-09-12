@@ -1,15 +1,15 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router';
 
-import { GlobalStyle } from './components/GlobalStyle';
+import { GlobalStyle } from './components/GlobalStyle.tsx';
 import {
   Container,
   ContentWrapper,
   Header,
   Main,
-} from './components/SharedStyles';
-import { AppSidebar } from './components/ui/Sidebar';
-import { Skeleton } from './components/ui/Skeleton';
+} from './components/SharedStyles.tsx';
+import { AppSidebar } from './components/ui/Sidebar.tsx';
+import { Skeleton } from './components/ui/Skeleton.tsx';
 
 export default function AppLayout() {
   return (

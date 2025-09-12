@@ -5,15 +5,19 @@ import { defineConfig } from 'vite';
 
 // https://vite.dev/config/
 export default defineConfig({
-  // build: {
-  //   rollupOptions: {
-  //     output: {
-  //       manualChunks: {
-  //         echarts: ['echarts'],
-  //       },
-  //     },
-  //   },
-  // },
+  build: {
+    cssMinify: 'lightningcss',
+    // rollupOptions: {
+    //   output: {
+    //     manualChunks: {
+    //       echarts: ['echarts'],
+    //     },
+    //   },
+    // },
+  },
+  css: {
+    transformer: 'lightningcss',
+  },
   plugins: [
     react({ plugins: [['@swc/plugin-styled-components', {}]] }),
     tailwindcss(),

@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 
-import { ContentWrapper, Header, Main, Title } from '@/components/SharedStyles';
+import { ContentWrapper, Header, Main, Title } from '@/components/SharedStyles.tsx';
 
 const routes = [
   {

@@ -1,20 +1,17 @@
 import { useQuery } from '@tanstack/react-query';
-
 import { lazy, Suspense } from 'react';
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from '../components/ui/Card';
-import {
-  ContentWrapper,
-  Header,
-  Main,
-  Title,
-} from '../components/SharedStyles';
-import { Skeleton } from '../components/ui/Skeleton';
-import { getProvinceSummary } from '../lib/data/news';
+
+import { ContentWrapper, Header, Main, Title } from '@/components/SharedStyles';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
+import { Skeleton } from '@/components/ui/Skeleton';
+import { getProvinceSummary } from '@/lib/data/news';
+
+const ProvinceSummaryGraph = lazy(
+  () => import('@/components/dashboard/ProvinceSummaryGraph')
+);
+const ProvinceSummaryBar = lazy(
+  () => import('@/components/dashboard/ProvinceSummaryBar')
+);
 
 export default function Dashboard() {
   return (
@@ -28,13 +25,6 @@ export default function Dashboard() {
     </ContentWrapper>
   );
 }
-
-const ProvinceSummaryGraph = lazy(
-  () => import('../components/dashboard/ProvinceSummaryGraph')
-);
-const ProvinceSummaryBar = lazy(
-  () => import('../components/dashboard/ProvinceSummaryBar')
-);
 
 function DashboardCharts() {
   const { isPending, error, data } = useQuery({
@@ -61,26 +51,33 @@ function DashboardCharts() {
 
   return (
     <div className="grid xl:grid-cols-2 gap-6">
-      <Card>
-        <CardHeader>
-          <CardTitle>Province Graph</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <Suspense fallback={<Skeleton className="size-full min-h-[500px]" />}>
-            <ProvinceSummaryGraph data={data} />
-          </Suspense>
-        </CardContent>
-      </Card>
-      <Card>
-        <CardHeader>
-          <CardTitle>Province Summary</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <Suspense fallback={<Skeleton className="size-full min-h-[500px]" />}>
-            <ProvinceSummaryBar data={data} />
-          </Suspense>
-        </CardContent>
-      </Card>
+      <ChartContainer title="Province Graph">
+        <ProvinceSummaryGraph data={data} />
+      </ChartContainer>
+      <ChartContainer title="Province Bar">
+        <ProvinceSummaryBar data={data} />
+      </ChartContainer>
     </div>
+  );
+}
+
+function ChartContainer({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>{title}</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <Suspense fallback={<Skeleton className="size-full min-h-[500px]" />}>
+          {children}
+        </Suspense>
+      </CardContent>
+    </Card>
   );
 }

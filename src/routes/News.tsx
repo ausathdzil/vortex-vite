@@ -2,14 +2,9 @@ import { useQuery } from '@tanstack/react-query';
 import { useSearchParams } from 'react-router';
 import { useDebouncedCallback } from 'use-debounce';
 
-import {
-  ContentWrapper,
-  Header,
-  Main,
-  Title,
-} from '../components/SharedStyles';
-import { Input } from '../components/ui/Input';
-import { Skeleton } from '../components/ui/Skeleton';
+import { ContentWrapper, Header, Main, Title } from '@/components/SharedStyles';
+import { Input } from '@/components/ui/Input';
+import { Skeleton } from '@/components/ui/Skeleton';
 import {
   Table,
   TableBody,
@@ -17,8 +12,9 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '../components/ui/Table';
-import { getNews } from '../lib/data/news';
+} from '@/components/ui/Table';
+import { getNews } from '@/lib/data/news';
+import { formatDate } from '@/lib/utils';
 
 export default function News() {
   const [searchParams] = useSearchParams();
@@ -112,12 +108,4 @@ function NewsTable({ searchParams }: { searchParams: URLSearchParams }) {
       </Table>
     </div>
   );
-}
-
-function formatDate(date: string) {
-  return new Date(date).toLocaleDateString('en-GB', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
 }

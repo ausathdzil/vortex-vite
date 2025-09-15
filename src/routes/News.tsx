@@ -74,10 +74,16 @@ function SearchInput() {
 function NewsTable({ searchParams }: { searchParams: URLSearchParams }) {
   const query = searchParams.get('q');
   const page = searchParams.get('page');
+  const size = searchParams.get('size');
 
   const { isPending, error, data } = useQuery({
-    queryKey: ['news', query, page],
-    queryFn: () => getNews({ q: query ?? undefined, page: page ?? undefined }),
+    queryKey: ['news', query, page, size],
+    queryFn: () =>
+      getNews({
+        q: query ?? undefined,
+        page: page ?? undefined,
+        size: size ?? '10',
+      }),
   });
 
   if (isPending) {

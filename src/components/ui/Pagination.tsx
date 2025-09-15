@@ -28,15 +28,25 @@ export function Pagination({
     setSearchParams(params);
   };
 
+  const handleSizeChange = (size: number) => {
+    const params = new URLSearchParams(searchParams);
+    params.set('page', '1');
+    params.set('size', size.toString());
+    setSearchParams(params);
+  };
+
   return (
     <PaginationWrapper>
       <div className="flex items-center gap-4">
         <div className="flex items-center gap-2">
           <p>Rows per page:</p>
-          <Select>
-            <option value="10">5</option>
-            <option value="20">10</option>
-            <option value="50">20</option>
+          <Select
+            onChange={(e) => handleSizeChange(Number(e.target.value))}
+            defaultValue={size.toString() ?? '10'}
+          >
+            <option value="6">6</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
           </Select>
         </div>
         <p className="[&>span]:text-primary [&>span]:font-medium">
@@ -53,10 +63,16 @@ export function Pagination({
           Page <span>{page}</span> of <span>{total_pages}</span>
         </p>
         <div className="flex items-center gap-2">
-          <OutlinedButton disabled={!has_prev} onClick={() => handlePageChange(page - 1)}>
+          <OutlinedButton
+            disabled={!has_prev}
+            onClick={() => handlePageChange(page - 1)}
+          >
             Previous
           </OutlinedButton>
-          <OutlinedButton disabled={!has_next} onClick={() => handlePageChange(page + 1)}>
+          <OutlinedButton
+            disabled={!has_next}
+            onClick={() => handlePageChange(page + 1)}
+          >
             Next
           </OutlinedButton>
         </div>

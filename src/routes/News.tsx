@@ -9,6 +9,7 @@ import {
   Title,
 } from '@/components/SharedStyles.tsx';
 import { Input } from '@/components/ui/Input.tsx';
+import { Pagination } from '@/components/ui/Pagination';
 import { Skeleton } from '@/components/ui/Skeleton.tsx';
 import {
   Table,
@@ -92,11 +93,10 @@ function NewsTable({ searchParams }: { searchParams: URLSearchParams }) {
   }
 
   return (
-    <div className="rounded-md overflow-hidden border border-border">
+    <div className="flex flex-col gap-4">
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>No</TableHead>
             <TableHead>Title</TableHead>
             <TableHead>Author</TableHead>
             <TableHead>Publish Date</TableHead>
@@ -104,9 +104,8 @@ function NewsTable({ searchParams }: { searchParams: URLSearchParams }) {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {data.data.map((item, index) => (
+          {data.data.map((item) => (
             <TableRow key={item.id}>
-              <TableCell>{index + 1}</TableCell>
               <TableCell>{item.title}</TableCell>
               <TableCell>{item.author}</TableCell>
               <TableCell>{formatDate(item.publish_date)}</TableCell>
@@ -115,6 +114,14 @@ function NewsTable({ searchParams }: { searchParams: URLSearchParams }) {
           ))}
         </TableBody>
       </Table>
+      <Pagination
+        count={data.count}
+        page={data.page}
+        size={data.size}
+        total_pages={data.total_pages}
+        has_next={data.has_next}
+        has_prev={data.has_prev}
+      />
     </div>
   );
 }

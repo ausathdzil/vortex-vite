@@ -48,7 +48,7 @@ const Sidebar = styled.aside`
   gap: calc(var(--spacing) * 4);
   padding: calc(var(--spacing) * 4);
   height: 100%;
-  width: 16rem;
+  min-width: 16rem;
 
   background: var(--sidebar);
   color: var(--sidebar-foreground);

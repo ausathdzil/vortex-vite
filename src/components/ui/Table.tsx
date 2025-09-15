@@ -4,6 +4,8 @@ const TableContainer = styled.div`
   position: relative;
   width: 100%;
   overflow-x: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
 `;
 
 const StyledTable = styled.table`

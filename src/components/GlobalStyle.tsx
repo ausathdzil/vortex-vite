@@ -8,4 +8,9 @@ export const GlobalStyle = createGlobalStyle`
 
 		letter-spacing: var(--tracking-normal);
 	}
+
+	button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
 `;

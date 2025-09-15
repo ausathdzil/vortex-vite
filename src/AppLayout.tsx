@@ -29,7 +29,7 @@ function AppSkeleton() {
   return (
     <ContentWrapper>
       <Header>
-        <Skeleton className="w-full h-6" />
+        <Skeleton className="w-full h-5" />
       </Header>
       <Main>
         <Skeleton className="size-full" />

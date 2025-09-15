@@ -2,7 +2,12 @@ import { useQuery } from '@tanstack/react-query';
 import { useSearchParams } from 'react-router';
 import { useDebouncedCallback } from 'use-debounce';
 
-import { ContentWrapper, Header, Main, Title } from '@/components/SharedStyles.tsx';
+import {
+  ContentWrapper,
+  Header,
+  Main,
+  Title,
+} from '@/components/SharedStyles.tsx';
 import { Input } from '@/components/ui/Input.tsx';
 import { Skeleton } from '@/components/ui/Skeleton.tsx';
 import {
@@ -36,7 +41,7 @@ function SearchInput() {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('q');
 
-  const handleChange = useDebouncedCallback((term: string) => {
+  const handleSearch = useDebouncedCallback((term: string) => {
     const params = new URLSearchParams(searchParams);
     params.set('page', '1');
     if (term) {
@@ -49,12 +54,16 @@ function SearchInput() {
     setSearchParams(params);
   }, 500);
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    handleSearch(e.target.value);
+  };
+
   return (
     <Input
       defaultValue={query ?? ''}
       id="q"
       name="q"
-      onChange={(e) => handleChange(e.target.value)}
+      onChange={handleChange}
       placeholder="Search news"
       type="search"
     />

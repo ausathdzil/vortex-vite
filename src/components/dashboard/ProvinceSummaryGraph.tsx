@@ -1,14 +1,39 @@
 import { type EChartsOption } from 'echarts';
 import ReactEChartsCore from 'echarts-for-react/lib/core';
 
+import { Skeleton } from '@/components/ui/Skeleton';
 import echarts from '@/lib/echarts/graph.ts';
 import type { ProvinceSummary } from '@/lib/types/news.ts';
 
 export default function ProvinceSummaryGraph({
   data,
+  isLoading,
+  error,
 }: {
-  data: ProvinceSummary[];
+  data: ProvinceSummary[] | undefined;
+  isLoading: boolean;
+  error: Error | null;
 }) {
+  if (isLoading) {
+    return <Skeleton className="size-full min-h-[500px]" />;
+  }
+
+  if (error) {
+    return (
+      <div className="flex items-center justify-center h-full min-h-[500px] text-destructive">
+        Error: {error.message}
+      </div>
+    );
+  }
+
+  if (!data) {
+    return (
+      <div className="flex items-center justify-center h-full min-h-[500px]">
+        No data available
+      </div>
+    );
+  }
+
   const provinceNodes = data.map((province, index) => ({
     id: province.province,
     name: province.province,
